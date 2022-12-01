@@ -1,5 +1,5 @@
 CREATE DATABASE quickeats_db;
-CREATE USER'webapp'@'%' IDENTIFIED BY 'abc123';
+CREATE USER'webapp'@'%' IDENTIFIED BY 'newpassword123!';
 GRANT ALL PRIVILEGES ON quickeats_db.* TO 'webapp'@'%';
 FLUSH PRIVILEGES;
 
