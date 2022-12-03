@@ -1,5 +1,6 @@
 CREATE DATABASE quickeats_db;
-CREATE USER'webapp'@'%' IDENTIFIED BY 'newpassword123!';
+/*CREATE USER 'webapp'@'%' IDENTIFIED BY MYSQL_PASSWORD_FILE;
+*/
 GRANT ALL PRIVILEGES ON quickeats_db.* TO 'webapp'@'%';
 FLUSH PRIVILEGES;
 
@@ -1424,3 +1425,5 @@ insert into Coupon (minimum_order_cost, maximum_total_off, expieration_date, dis
 insert into Coupon (minimum_order_cost, maximum_total_off, expieration_date, discount, code, order_id) values (36, 5.01, '2022-01-11', 54, 'da4a062f-2ba0-4d54-b1bd-6cd63ecd9951', 98);
 insert into Coupon (minimum_order_cost, maximum_total_off, expieration_date, discount, code, order_id) values (40, 81.55, '2022-05-22', 17, '5abeab4a-a7d8-4e37-9f1b-9eb35de2e78d', 99);
 insert into Coupon (minimum_order_cost, maximum_total_off, expieration_date, discount, code, order_id) values (9, 15.09, '2022-06-04', 94, 'b038b22c-c6f8-4bfc-9714-956915960ff7', 100);
+
+DROP USER 'webapp'@'%';
