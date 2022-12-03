@@ -12,7 +12,7 @@ def create_app():
     # secret key that will be used for securely signing the session 
     # cookie and can be used for any other security related needs by 
     # extensions or your application
-    app.config['SECRET_KEY'] = 'someCrazyS3cR3T!Key.!'
+    app.config['SECRET_KEY'] = open('/secrets/db_password.txt').readline()
 
     # these are for the DB object to be able to connect to MySQL. 
     app.config['MYSQL_DATABASE_USER'] = 'webapp'
