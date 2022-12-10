@@ -80,7 +80,7 @@ create table Restaurant (
 	city VARCHAR(50) NOT NULL,
 	state VARCHAR(50) NOT NULL,
 	zip_code VARCHAR(50) NOT NULL,
-    cuisine VARCHAR(10) NOT NULL,
+    cuisine VARCHAR(10) NOT NULL
 );
 
 create table Trip (
