@@ -3,7 +3,7 @@ import json
 from src import db
 
 
-restaurants = Blueprint('retaurants', __name__)
+restaurants = Blueprint('restaurants', __name__)
 
 
 #Test
@@ -12,10 +12,10 @@ def newhome():
     return ('<h1>TEST</h1>')
 
 
-@restaurants.route('/names', methods = ['POST'])
+@restaurants.route('/restinfo', methods = ['GET'])
 def restaurantnames():
     cursor = db.get_db().cursor()
-    cursor.execute('select name from Restaurant')
+    cursor.execute('select * from Restaurant')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
