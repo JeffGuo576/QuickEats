@@ -63,19 +63,14 @@ def add_item():
     itemname = request.form ['itemname']
     itemprice = request.form['itemprice']
     category = request.form['category']
-    menuid = 'SELECT COUNT(menu_id) FROM Menu'
-    categoryid = 'SELECT COUNT(category_id) FROM Category' 
-    cursor.execute(menuid)
-    cursor.execute(categoryid)
-    print(menuid)
-    menuid = int(menuid)
-    menuid += 1
-    categoryid = int(categoryid)
-    print(categoryid)
-    categoryid += 1
+    menuid = request.form['menu']
+    #Inserts new Category with associated item
     query = f'INSERT INTO Category(name) VALUES(\"{category}\")'
-    query2 = f'INSERT INTO Item(name, price, menu_id, category_id, profit, amount_sold)  VALUES(\"{itemname}\", \"{itemprice}\", \"{menuid}\",\"{categoryid}\",0,0)'
+    categoryid = 'SELECT COUNT(category_id) FROM Category' 
+    cursor.execute(categoryid)
     cursor.execute(query)
+    #Inserts new item
+    query2 = f'INSERT INTO Item(name, price, menu_id, category_id, profit, amount_sold)  VALUES(\"{itemname}\", \"{itemprice}\", \"{menuid}\",\"{categoryid}\",0,0)'
     cursor.execute(query2)
     db.get_db().commit()
     return "Success!"

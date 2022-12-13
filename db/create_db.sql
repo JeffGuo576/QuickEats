@@ -820,7 +820,7 @@ insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('20',
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('92', 35, 62, 4);
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('84', 23, 80, 65);
 
-insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('breakfast', 17, '9:15 AM', '6:20 PM');
+insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('breakfast', 1, '9:15 AM', '6:20 PM');
 insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('lunch', 27, '1:28 AM', '4:54 AM');
 insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('lunch', 28, '1:36 PM', '3:47 PM');
 insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('dinner', 11, '4:33 AM', '7:38 PM');
@@ -828,7 +828,7 @@ insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('dinne
 insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('dinner', 10, '12:29 PM', '7:35 AM');
 insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('lunch', 19, '10:35 AM', '7:35 PM');
 insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('lunch', 34, '5:40 AM', '10:17 PM');
-insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('lunch', 1, '1:25 PM', '11:47 AM');
+insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('lunch', 17, '1:25 PM', '11:47 AM');
 insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('dinner', 12, '4:33 AM', '7:25 AM');
 insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('dinner', 12, '6:10 AM', '8:36 PM');
 insert into Menu (menu_type, restaurant_id, start_time, end_time) values ('breakfast', 51, '12:51 PM', '1:30 PM');
