@@ -21,26 +21,11 @@ def get_customers():
     return the_response
 
 
-# Get customer detail for customer with particular userID
+# Get the street detail of a customer with particular userID
 @customers.route('/customer/<userID>', methods=['GET'])
 def get_customer_info(userID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from Customer where customer_id = {0}'.format(userID))
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-    return the_response
-
-# The restaurant names 
-@customers.route('/names', methods = ['POST'])
-def restaurantNames():
-    cursor = db.get_db().cursor()
-    cursor.execute('select name from Restaurant')
+    cursor.execute('select street from Customer where customer_id = {0}'.format(userID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -65,3 +50,4 @@ def restaurantInfo():
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+
