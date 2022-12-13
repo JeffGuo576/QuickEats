@@ -25,6 +25,21 @@ def restaurantnames():
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+'''
+@restaurants.route('/restaurant/search/<restName>', methods=['GET'])
+def search_restaurant_name(restName):
+    cursor = db.get_db().cursor()
+    cursor.execute('select * from Restaurant where INSTR(name, \'{0}\''.format(restName))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+'''
 
 # Get the particular detail of a customer with particular restID
 @restaurants.route('/restaurant/<restID>', methods=['GET'])
@@ -43,9 +58,24 @@ def get_restaurant_info(restID):
 
 #
 @restaurants.route('/menuItems/<restID>', methods=['GET'])
-def get_menuItems(restID):
+def get_menuItem(restID):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT i.name, i.profit FROM Restaurant r JOIN Menu m ON r.restaurant_id = m.restaurant_id JOIN Item i ON m.menu_id = i.menu_id WHERE r.restaurant_id = {0}'.format(restID))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+
+@restaurants.route('/menuanditems', methods=['GET'])
+def get_menuItems():
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT * FROM Restaurant r JOIN Menu m ON r.restaurant_id = m.restaurant_id JOIN Item i ON m.menu_id = i.menu_id')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -67,12 +97,6 @@ def add_item():
     categoryid = 'SELECT COUNT(category_id) FROM Category' 
     cursor.execute(menuid)
     cursor.execute(categoryid)
-    print(menuid)
-    menuid = int(menuid)
-    menuid += 1
-    categoryid = int(categoryid)
-    print(categoryid)
-    categoryid += 1
     query = f'INSERT INTO Category(name) VALUES(\"{category}\")'
     query2 = f'INSERT INTO Item(name, price, menu_id, category_id, profit, amount_sold)  VALUES(\"{itemname}\", \"{itemprice}\", \"{menuid}\",\"{categoryid}\",0,0)'
     cursor.execute(query)
