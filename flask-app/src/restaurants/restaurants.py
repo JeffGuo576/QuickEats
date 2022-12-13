@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -27,7 +27,7 @@ def restaurantnames():
     return the_response
 
 # Get the particular detail of a customer with particular restID
-@restaurants.route('/restaurant/<userID>', methods=['GET'])
+@restaurants.route('/restaurant/<restID>', methods=['GET'])
 def get_restaurant_info(restID):
     cursor = db.get_db().cursor()
     cursor.execute('select * from Restaurant where restaurant_id = {0}'.format(restID))
@@ -55,3 +55,27 @@ def get_menuItems(restID):
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+
+@restaurants.route('/newItem', methods = ['POST'])
+def add_item():
+    current_app.logger.info(request.form)
+    cursor = db.get_db().cursor()
+    itemname = request.form ['itemname']
+    itemprice = request.form['itemprice']
+    category = request.form['category']
+    menuid = 'SELECT COUNT(menu_id) FROM Menu'
+    categoryid = 'SELECT COUNT(category_id) FROM Category' 
+    cursor.execute(menuid)
+    cursor.execute(categoryid)
+    print(menuid)
+    menuid = int(menuid)
+    menuid += 1
+    categoryid = int(categoryid)
+    print(categoryid)
+    categoryid += 1
+    query = f'INSERT INTO Category(name) VALUES(\"{category}\")'
+    query2 = f'INSERT INTO Item(name, price, menu_id, category_id, profit, amount_sold)  VALUES(\"{itemname}\", \"{itemprice}\", \"{menuid}\",\"{categoryid}\",0,0)'
+    cursor.execute(query)
+    cursor.execute(query2)
+    db.get_db().commit()
+    return "Success!"
