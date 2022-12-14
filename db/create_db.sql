@@ -772,7 +772,7 @@ insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('71',
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('15', 48, 89, 23);
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('39', 23, 96, 66);
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('20', 8, 49, 65);
-insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('44', 80, 37, 1);
+insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('44', 80, 37, 5);
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('12', 85, 6, 71);
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('69', 26, 6, 74);
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('28', 46, 9, 38);
@@ -802,7 +802,7 @@ insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('78',
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('78', 72, 73, 86);
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('60', 49, 99, 88);
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('64', 83, 20, 46);
-insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('47', 53, 7, 1);
+insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('47', 53, 7, 5);
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('72', 56, 79, 65);
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('49', 57, 3, 55);
 insert into Trip (distance, restaurant_id, customer_id, driver_id) values ('46', 50, 11, 61);
