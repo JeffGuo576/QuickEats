@@ -40,6 +40,10 @@ customers.py
 
 127.0.0.1:8001/cust/customers Gets all the customers from the database
 
+127.0.0.1:8001/cust/orderline Gets all the orderline details from the database
+
+127.0.0.1:8001/cust/newOrderline Adds a new orderline into the database
+
 drivers.py
 127.0.0.1:8001/driv/order/<orderID> Gets the order details from a specific order id
 

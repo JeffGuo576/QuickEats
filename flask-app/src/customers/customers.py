@@ -37,7 +37,23 @@ def get_customer_info(userID):
     return the_response
 
 
-#Adds a new item to the menu
+#Gets all the orderline from the database
+@customers.route('/orderline', methods=['GET'])
+def get_orderline_info():
+    cursor = db.get_db().cursor()
+    cursor.execute('Select * FROM OrderLine o JOIN Item i ON o.item_id = i.item_id')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+
+#Adds a new orderline to the database
 @customers.route('/newOrderline', methods = ['POST'])
 def add_orderline():
     current_app.logger.info(request.form)
@@ -46,7 +62,8 @@ def add_orderline():
     quantity = request.form['quantity']
     price = request.form['price']
     order_id = request.form['order_id']
-    query2 = f'INSERT INTO Orderline(item_id, quantity, price, order_id)  VALUES(\"{item_id}\", \"{quantity}\", \"{price}\", \"{order_id}\")'
+    query2 = f'INSERT INTO OrderLine(item_id, quantity, price, order_id)  VALUES(\"{item_id}\", \"{quantity}\", \"{price}\", \"{order_id}\")'
     cursor.execute(query2)
     db.get_db().commit()
     return "Success!"
+
