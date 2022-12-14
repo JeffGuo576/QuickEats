@@ -61,6 +61,25 @@ def add_orderline():
     item_id = request.form ['item_id']
     quantity = request.form['quantity']
     price = request.form['price']
+    line_price = int(quantity) * int(price)
+    cursor.execute('Select * FROM Orders where order_id = 1')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    current_app.logger.info(json_data)
+    prev_total = 0
+    the_response = (jsonify(json_data))
+    for r in json_data:
+
+        if(int(r['order_id']) == 1):
+            prev_total += int(r['total_price'])
+
+    current_app.logger.info(prev_total)
+    new_total = prev_total + line_price
+    current_app.logger.info(new_total)
+    cursor.execute('Update Orders Set total_price={0} Where order_id=1'.format(new_total))
     order_id = request.form['order_id']
     query2 = f'INSERT INTO OrderLine(item_id, quantity, price, order_id)  VALUES(\"{item_id}\", \"{quantity}\", \"{price}\", \"{order_id}\")'
     cursor.execute(query2)

@@ -1377,7 +1377,7 @@ insert into PaymentType (name, pm_id) values ('Credit', 98);
 insert into PaymentType (name, pm_id) values ('Debit', 99);
 insert into PaymentType (name, pm_id) values ('Debit', 100);
 
-insert into Orders (order_time, total_price, customer_id, driver_id, pm_id) values ('2022-09-10 10:17:38', 263.71, 1, 1, 1);
+insert into Orders (order_time, total_price, customer_id, driver_id, pm_id) values ('2022-09-10 10:17:38', 0, 1, 1, 1);
 insert into Orders (order_time, total_price, customer_id, driver_id, pm_id) values ('2022-09-21 11:37:35', 470.09, 2, 2, 2);
 insert into Orders (order_time, total_price, customer_id, driver_id, pm_id) values ('2022-09-07 07:17:31', 706.51, 3, 3, 3);
 insert into Orders (order_time, total_price, customer_id, driver_id, pm_id) values ('2022-05-22 09:24:25', 354.45, 4, 4, 4);
