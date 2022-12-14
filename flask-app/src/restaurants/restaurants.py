@@ -19,21 +19,6 @@ def restaurantnames():
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
-'''
-@restaurants.route('/restaurant/search/<restName>', methods=['GET'])
-def search_restaurant_name(restName):
-    cursor = db.get_db().cursor()
-    cursor.execute('select * from Restaurant where INSTR(name, \'{0}\''.format(restName))
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-    return the_response
-'''
 
 # Get the restaurant details from the restaurant ID
 @restaurants.route('/restaurant/<restID>', methods=['GET'])

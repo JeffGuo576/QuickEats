@@ -53,7 +53,7 @@ def get_orderline_info():
     return the_response
 
 
-#Adds a new orderline to the database
+#Adds a new orderline to the database and updates the total_price of the order
 @customers.route('/newOrderline', methods = ['POST'])
 def add_orderline():
     current_app.logger.info(request.form)

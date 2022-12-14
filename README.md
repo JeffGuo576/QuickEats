@@ -20,6 +20,8 @@ This repo contains a boilerplate setup for spinning up 2 docker containers:
 1. `conda activate webdev`
 1. `pip install flask flask-mysql flask-restful cryptography flask-login`
 
+Video Link: https://www.youtube.com/watch?v=TPV1MFHX5rM
+
 ## Project
 Quickeats is an online food delivery servce that utilizes self-employed drivers to deliver ordered food from restaurants to customers. The customers place orders for menu items at participating restaurants, which is then available for pickup by drivers. The company earns a percentage of the order delivered. With this product we hope to offer a simple alternative delivery option for restaurants that previously did not. We also provide a central platform for hungry customers to easily obtain food from their favorite participating restaurants.
 
